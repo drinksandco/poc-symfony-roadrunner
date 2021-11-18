@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  php:
+    build: ./docker/php/
+    ports:
+      - 8081:8081
+    working_dir: /opt
+    volumes:
+      - ./:/opt
+    command: ['/usr/bin/rr', 'serve']
