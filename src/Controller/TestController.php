@@ -17,7 +17,7 @@ class TestController
     */
     public function foo(): JsonResponse
     {
-        $response = $this->client->request('GET', 'https://jsonplaceholder.typicode.com/todos/1');
+        $response = $this->client->request('GET', 'http://external_api:8080/');
         return new JsonResponse($response->toArray());
     }
 }

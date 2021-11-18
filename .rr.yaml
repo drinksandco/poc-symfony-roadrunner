@@ -8,20 +8,17 @@ server:
 
 http:
   address: 0.0.0.0:8081
-  middleware: [ "static", "gzip" ]
-  uploads:
-    forbid: [ ".php", ".exe", ".bat" ]
-  static:
-    dir: "public"
-    forbid: [ ".php", ".htaccess" ]
+  middleware: [ "gzip" ]
+  pool:
+    num_workers: 1
 
 logs:
   mode: production
   channels:
     http:
-      level: debug # Log all http requests, set to info to disable
+      level: error # Log all http requests, set to info to disable
     server:
-      level: info # Everything written to worker stderr is logged
+      level: error # Everything written to worker stderr is logged
       mode: raw
     metrics:
       level: error

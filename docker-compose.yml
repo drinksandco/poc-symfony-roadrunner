@@ -3,9 +3,18 @@ version: '3.8'
 services:
   php:
     build: ./docker/php/
+    links:
+      - external_api
     ports:
       - 8081:8081
     working_dir: /opt
     volumes:
       - ./:/opt
     command: ['/usr/bin/rr', 'serve']
+  external_api:
+    build: ./docker/php/
+    ports:
+      - 8080:8080
+    volumes:
+      - ./external-api/:/opt/external-api
+    command: ["php", "/opt/external-api/test.php"]

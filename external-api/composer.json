@@ -1,0 +1,42 @@
+{
+    "name": "drinksco/poc-react-envs",
+    "description": "Prpoof of concept of Reactive PHP http server environments using different available technologies.",
+    "keywords": ["react-php", "drinksandco"],
+    "type": "project",
+    "license": "proprietary",
+    "require": {
+        "php": ">=8.0",
+        "nyholm/psr7": "^1.4",
+        "psr/http-server-handler": "^1.0",
+        "psr/http-server-middleware": "^1.0",
+        "react/http": "^1.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Drinksco\\React\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Drinksco\\Test\\React\\": "test"
+        }
+    },
+    "scripts": {
+        "check-all": [
+            "composer unused",
+            "@cs-check",
+            "@test",
+            "@inspect",
+            "@infection"
+        ],
+        "cs-check": "phpcs src --colors",
+        "cs-fix": "phpcbf src --colors",
+        "inspect": "phpstan analyse src -l9 --ansi",
+        "test": "phpunit --colors=always",
+        "psalm": "psalm",
+        "infection": "XDEBUG_MODE=coverage roave-infection-static-analysis-plugin"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
