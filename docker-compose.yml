@@ -7,6 +7,8 @@ services:
       - external_api
     ports:
       - 8081:8081
+    environment:
+      XDEBUG_MODE: "off"
     working_dir: /opt
     volumes:
       - ./:/opt
@@ -15,6 +17,9 @@ services:
     build: ./docker/php/
     ports:
       - 8080:8080
+    environment:
+      XDEBUG_MODE: "off"
     volumes:
       - ./external-api/:/opt/external-api
+    working_dir: /opt/external-api
     command: ["php", "/opt/external-api/test.php"]
